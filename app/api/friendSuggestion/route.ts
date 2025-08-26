@@ -29,6 +29,7 @@ export async function GET(req: Request) {
     if (!loggedInUser)
       return NextResponse.json({ error: "User not found" }, { status: 404 });
 
+    
     // Find users with at least one matching interest (excluding self)
     const suggestedUsers = await User.find({
       _id: { $ne: loggedInUser._id },
