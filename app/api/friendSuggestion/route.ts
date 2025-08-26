@@ -22,6 +22,7 @@ export async function GET(req: Request) {
       token,
       process.env.JWT_SECRET || "default_secret"
     ) as { id: string };
+    console.log("decoded is : ", decoded);
 
     // Get logged-in user
     const loggedInUser = await User.findById(decoded.id).populate("interests");
